@@ -1,0 +1,107 @@
+# -*- coding: utf-8 -*-
+
+# Scrapy settings for su_ning_keyword project
+#
+# For simplicity, this file contains only settings considered important or
+# commonly used. You can find more settings consulting the documentation:
+#
+#     https://doc.scrapy.org/en/latest/topics/settings.html
+#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
+#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+import time
+# log日志配置
+LOG_ENABLED = True
+LOG_ENCODING = 'utf-8'
+# LOG_FILE = "{}_mySpider.log".format(time.strftime('%Y-%m-%d'))
+LOG_LEVEL = "INFO"
+# LOG_LEVEL = "ERROR"
+
+BOT_NAME = 'su_ning_keyword'
+
+SPIDER_MODULES = ['su_ning_keyword.spiders']
+NEWSPIDER_MODULE = 'su_ning_keyword.spiders'
+
+
+# Crawl responsibly by identifying yourself (and your website) on the user-agent
+# USER_AGENT = 'su_ning_keyword (+http://www.yourdomain.com)'
+user_agent_list = [
+    'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.1',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/536.6',
+    'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/536.6',
+    'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.1',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
+]
+
+# Obey robots.txt rules
+ROBOTSTXT_OBEY = False
+
+# Configure maximum concurrent requests performed by Scrapy (default: 16)
+CONCURRENT_REQUESTS = 8
+
+# Configure a delay for requests for the same website (default: 0)
+# See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
+# See also autothrottle settings and docs
+# 设置访问下载的间隔延时时间(秒)
+DOWNLOAD_DELAY = 0.1
+RANDOMIZE_DOWNLOAD_DELAY = True
+# The download delay setting will honor only one of:
+# CONCURRENT_REQUESTS_PER_DOMAIN = 16
+# CONCURRENT_REQUESTS_PER_IP = 16
+
+# Disable cookies (enabled by default)
+COOKIES_ENABLED = False
+
+# Disable Telnet Console (enabled by default)
+# TELNETCONSOLE_ENABLED = False
+
+# Override the default request headers:
+# DEFAULT_REQUEST_HEADERS = {
+#    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+#    'Accept-Language': 'en',
+# }
+
+# Enable or disable spider middlewares
+# See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+# SPIDER_MIDDLEWARES = {
+#     'su_ning_keyword.middlewares.SuNingKeywordSpiderMiddleware': 543,
+# }
+
+# Enable or disable downloader middlewares
+# See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
+DOWNLOADER_MIDDLEWARES = {
+    'su_ning_keyword.middlewares.RandomUserAgentMiddleware': 543,
+}
+
+# Enable or disable extensions
+# See https://doc.scrapy.org/en/latest/topics/extensions.html
+# EXTENSIONS = {
+#     'scrapy.extensions.telnet.TelnetConsole': None,
+# }
+
+# Configure item pipelines
+# See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+ITEM_PIPELINES = {
+    'su_ning_keyword.pipelines.SuNingKeywordPipeline': 300,
+}
+
+# Enable and configure the AutoThrottle extension (disabled by default)
+# See https://doc.scrapy.org/en/latest/topics/autothrottle.html
+# AUTOTHROTTLE_ENABLED = True
+# The initial download delay
+# AUTOTHROTTLE_START_DELAY = 5
+# The maximum download delay to be set in case of high latencies
+# AUTOTHROTTLE_MAX_DELAY = 60
+# The average number of requests Scrapy should be sending in parallel to
+# each remote server
+# AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+# Enable showing throttling stats for every response received:
+# AUTOTHROTTLE_DEBUG = False
+
+# Enable and configure HTTP caching (disabled by default)
+# See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
+# HTTPCACHE_ENABLED = True
+# HTTPCACHE_EXPIRATION_SECS = 0
+# HTTPCACHE_DIR = 'httpcache'
+# HTTPCACHE_IGNORE_HTTP_CODES = []
+# HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
